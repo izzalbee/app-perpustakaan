@@ -56,3 +56,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Deskripsi Singkat Aplikasi
+
+1. Nama aplikasi: Sistem Perpustakaan Digital Kampus.
+2. Tujuan: Mengatur dan mengelola sistem perpustakaan, seperti peminjaman dan pengembalian buku.
+3. Cara menjalankan secara lokal: menggunakan git clone https://github.com/izzalbee/app-perpustakaan.git
+
+## Perbedaan Model, View, dan Controller
+
+1. Model: Berisi semua logika dan aturan bisnis dari aplikasi
+2. View: Berfungsi hanya untuk mengatur tampilan aplikasi
+3. Controller: Penghubung antara model dan view, controller akan meminta model untuk mengolah/mengambil data kemudian mengirim ke view untuk ditampilkan ke user
