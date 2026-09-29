@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreMemberRequest extends FormRequest
 {
@@ -24,8 +25,8 @@ class StoreMemberRequest extends FormRequest
     {
         return [
             'nama' => 'required|string|max:200',
-            'nim' => 'required|digits_between:1,20',
-            'email' => 'required|email|max:200',
+            'nim' => ['required', 'digits_between:1,20', Rule::unique('members', 'nim')],
+            'email' => ['required', 'email', 'max:200', Rule::unique('members', 'email')],
             'nomor_telepon' => 'required|digits_between:1,20',
             'alamat' => 'required|string|max:300',
             'status' => 'required|in:aktif,nonaktif',
