@@ -7,13 +7,13 @@
     <h1>Edit Member</h1>
     <p><a href="{{ route('members.index') }}">&larr; Kembali ke daftar member</a></p>
 
-    <form action="{{ route('members.update', $members['id']) }}" method="POST">
+    <form action="{{ route('members.update', $member['id']) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div>
             <label for="nama">Nama Anggota</label><br>
-            <input type="text" name="nama" id="nama" value="{{ old('nama', $members['nama']) }}">
+            <input type="text" name="nama" id="nama" value="{{ old('nama', $member['nama']) }}">
             @error('nama')
                 <div class="error">{{ $message }}</div>
             @enderror
@@ -21,25 +21,25 @@
         <br>
 
         <label for="nim">NIM</label>
-        <input type="number" name="nim" id="nim" value="{{ old('nim') }}">
+        <input type="number" name="nim" id="nim" value="{{ old('nim', $member['nim']) }}">
         @error('nim')
             <div class="error">{{ $message }}</div>
         @enderror
 
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="{{ old('email') }}">
+        <input type="text" name="email" id="email" value="{{ old('email', $member['email']) }}">
         @error('email')
             <div class="error">{{ $message }}</div>
         @enderror
 
         <label for="nomor_telepon">Nomor Telepon</label>
-        <input type="number" name="nomor_telepon" id="nomor_telepon" value="{{ old('nomor_telepon') }}">
+        <input type="number" name="nomor_telepon" id="nomor_telepon" value="{{ old('nomor_telepon', $member['nomor_telepon']) }}">
         @error('nomor_telepon')
             <div class="error">{{ $message }}</div>
         @enderror
 
         <label for="alamat">Alamat</label>
-        <input type="text" name="alamat" id="alamat" value="{{ old('alamat') }}">
+        <input type="text" name="alamat" id="alamat" value="{{ old('alamat', $member['alamat']) }}">
         @error('alamat')
             <div class="error">{{ $message }}</div>
         @enderror

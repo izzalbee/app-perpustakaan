@@ -9,27 +9,27 @@
     <table>
         <tr>
             <th>Nama</th>
-            <td>{{ $members['judul'] }}</td>
+            <td>{{ $member['nama'] }}</td>
         </tr>
         <tr>
             <th>NIM</th>
-            <td>{{ $members['nim'] }}</td>
+            <td>{{ $member['nim'] }}</td>
         </tr>
         <tr>
             <th>Email</th>
-            <td>{{ $members['email'] }}</td>
+            <td>{{ $member['email'] }}</td>
         </tr>
         <tr>
             <th>No Telepon</th>
-            <td>{{ $members['no_telepon'] }}</td>
+            <td>{{ $member['nomor_telepon'] }}</td>
         </tr>
         <tr>
             <th>Alamat</th>
-            <td>{{ $members['alamat'] }}</td>
+            <td>{{ $member['alamat'] }}</td>
         </tr>
         <tr>
             <th>Status</th>
-            <td>{{ $members['status'] }}</td>
+            <td>{{ $member['status'] }}</td>
         </tr>
     </table>
 @endsection

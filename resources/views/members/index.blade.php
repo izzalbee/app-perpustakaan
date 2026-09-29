@@ -23,6 +23,7 @@
                 <th>Email</th>
                 <th>No. Telepon</th>
                 <th>Status</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,14 @@
                     <td>{{ $member['email'] }}</td>
                     <td>{{ $member['nomor_telepon'] }}</td>
                     <td>{{ ucfirst($member['status']) }}</td>
+                    <td>
+                        <a href="{{ route('members.show', $member['id']) }}" class="btn">Detail</a>
+                        <a href="{{ route('members.edit', $member['id']) }}" class="btn">Edit</a>
+                        <form action="{{ route('members.destroy', $member['id']) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus anggota ini?')">Hapus</button>
+                        </form>
                 </tr>
             @empty
                 <tr>
