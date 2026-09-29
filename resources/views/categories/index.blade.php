@@ -41,5 +41,6 @@
         </tbody>
     </table>
 
-    <p><em>Catatan: data di atas masih data dummy (array statis di Controller), belum dari database. Migration &amp; Model Eloquent baru dibuat di Pertemuan 5.</em></p>
+        {{-- File: resources/views/categories/index.blade.php (ganti paragraf "Catatan: data dummy..." di akhir file dengan ini) --}}
+    {{ $categories->links() }}
 @endsection
