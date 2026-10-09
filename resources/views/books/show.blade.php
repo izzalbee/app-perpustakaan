@@ -33,8 +33,8 @@
         </tr>
         {{-- File: resources/views/books/show.blade.php (potongan) --}}
         <tr>
-            <th>ID Kategori</th>
-            <td>{{ $book['category_id'] }}</td>
+            <th>Kategori</th>  {{-- sebelumnya: <th>ID Kategori</th> --}}
+            <td>{{ $book['category']['nama_kategori'] }}</td>  {{-- sebelumnya: {{ $book['category_id'] }} --}}
         </tr>
     </table>
 @endsection
