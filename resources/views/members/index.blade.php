@@ -8,12 +8,6 @@
 
     <p><a href="{{ route('members.create') }}" class="btn">+ Tambah Anggota</a></p>
 
-    <form action="{{ route('members.index') }}" method="GET">
-        <label for="search">Cari nama anggota</label>
-        <input type="search" name="search" id="search" value="{{ request('search') }}">
-        <button type="submit" class="btn">Cari</button>
-    </form>
-
     <table>
         <thead>
             <tr>
@@ -36,23 +30,24 @@
                     <td>{{ $member['nomor_telepon'] }}</td>
                     <td>{{ ucfirst($member['status']) }}</td>
                     <td>
-                        <a href="{{ route('members.show', $member['id']) }}" class="btn">Detail</a>
-                        <a href="{{ route('members.edit', $member['id']) }}" class="btn">Edit</a>
-                        <form action="{{ route('members.destroy', $member['id']) }}" method="POST" style="display: inline-block;">
+                        <a href="{{ route('members.show', $member['id']) }}">Detail</a>
+                        |
+                        <a href="{{ route('members.edit', $member['id']) }}">Edit</a>
+                        |
+                        <form class="inline" action="{{ route('members.destroy', $member['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus anggota ini?')">Hapus</button>
+                            <button type="submit">Hapus</button>
                         </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6">Belum ada data anggota.</td>
+                    <td colspan="7">Belum ada data anggota.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
 
-<div class="pagination-wrap">
-        {{ $members->appends(request()->query())->links() }}
-    </div>
-    @endsection
+    {{ $members->links() }}
+@endsection

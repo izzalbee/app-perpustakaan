@@ -4,31 +4,25 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreMemberRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'nama' => 'required|string|max:200',
-            'nim' => ['required', 'digits_between:1,20', Rule::unique('members', 'nim')],
-            'email' => ['required', 'email', 'max:200', Rule::unique('members', 'email')],
-            'nomor_telepon' => 'required|digits_between:1,20',
-            'alamat' => 'required|string|max:300',
+            'nama' => 'required|string|max:100',
+            'nim' => 'required|string|max:20|unique:members,nim',
+            'email' => 'required|email|max:100|unique:members,email',
+            'nomor_telepon' => 'required|string|max:15',
+            'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
         ];
     }
@@ -36,18 +30,15 @@ class StoreMemberRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nama.required' => 'Nama wajib diisi.',
-            'nama.max' => 'Nama maksimal 200 karakter.',
+            'nama.required' => 'Nama anggota wajib diisi.',
             'nim.required' => 'NIM wajib diisi.',
-            'nim.digits_between' => 'NIM harus angka maks 20 digit',
+            'nim.unique' => 'NIM sudah terdaftar.',
             'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Email tidak valid.',
-            'email.max' => 'Email maksimal 200 karakter.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah terdaftar.',
             'nomor_telepon.required' => 'Nomor telepon wajib diisi.',
-            'nomor_telepon.digits_between' => 'Masukkan angka maks 20 digit.',
             'alamat.required' => 'Alamat wajib diisi.',
-            'alamat.max' => 'Alamat maksimal 300 karakter.',
-            'status.required' => 'Kategori wajib dipilih.',
+            'status.required' => 'Status wajib dipilih.',
             'status.in' => 'Status tidak valid.',
         ];
     }
