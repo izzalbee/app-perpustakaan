@@ -24,21 +24,8 @@
             @enderror
         </p>
 
-        <p>
-            <label for="user_id">Petugas</label><br>
-            <select name="user_id" id="user_id">
-                <option value="">-- Pilih Petugas --</option>
-                @foreach ($users as $user)
-                    <option value="{{ $user['id'] }}" @selected(old('user_id') == $user['id'])>
-                        {{ $user['name'] }}
-                    </option>
-                @endforeach
-            </select>
-            @error('user_id')
-                <br><small><strong>{{ $message }}</strong></small>
-            @enderror
-        </p>
-        <p><em>Catatan: dropdown petugas dipilih manual karena login belum ada - otomatis dari user yang login mulai Pertemuan 8.</em></p>
+        {{-- File: resources/views/loans/create.blade.php --}}
+        <p><em>Petugas pencatat: {{ auth()->user()->name }} (otomatis dari akun yang login).</em></p>
 
         <p>
             <label for="tanggal_pinjam">Tanggal Pinjam</label><br>
